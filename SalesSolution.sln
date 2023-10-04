@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sales.Api", "Sales.Api\Sales.Api.csproj", "{4F83072F-4549-4A27-8111-F0CEB50D177E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D655A55B-6851-4148-B4FD-033CA3F06B99} = {D655A55B-6851-4148-B4FD-033CA3F06B99}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sales.Domain", "Sales.Domain\Sales.Domain.csproj", "{8C42C40E-A882-441E-A6CA-6FC3FDB3045D}"
 EndProject

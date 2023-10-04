@@ -1,0 +1,11 @@
+C:\Proyectos\Api-Restful\Sales.Service\bin\Debug\net7.0\Sales.Service.deps.json
+C:\Proyectos\Api-Restful\Sales.Service\bin\Debug\net7.0\Sales.Service.dll
+C:\Proyectos\Api-Restful\Sales.Service\bin\Debug\net7.0\Sales.Service.pdb
+C:\Proyectos\Api-Restful\Sales.Service\obj\Debug\net7.0\Sales.Service.GeneratedMSBuildEditorConfig.editorconfig
+C:\Proyectos\Api-Restful\Sales.Service\obj\Debug\net7.0\Sales.Service.AssemblyInfoInputs.cache
+C:\Proyectos\Api-Restful\Sales.Service\obj\Debug\net7.0\Sales.Service.AssemblyInfo.cs
+C:\Proyectos\Api-Restful\Sales.Service\obj\Debug\net7.0\Sales.Service.csproj.CoreCompileInputs.cache
+C:\Proyectos\Api-Restful\Sales.Service\obj\Debug\net7.0\Sales.Service.dll
+C:\Proyectos\Api-Restful\Sales.Service\obj\Debug\net7.0\refint\Sales.Service.dll
+C:\Proyectos\Api-Restful\Sales.Service\obj\Debug\net7.0\Sales.Service.pdb
+C:\Proyectos\Api-Restful\Sales.Service\obj\Debug\net7.0\ref\Sales.Service.dll
