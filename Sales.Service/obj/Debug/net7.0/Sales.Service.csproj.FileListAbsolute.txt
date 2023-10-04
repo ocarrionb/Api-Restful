@@ -9,3 +9,9 @@ C:\Proyectos\Api-Restful\Sales.Service\obj\Debug\net7.0\Sales.Service.dll
 C:\Proyectos\Api-Restful\Sales.Service\obj\Debug\net7.0\refint\Sales.Service.dll
 C:\Proyectos\Api-Restful\Sales.Service\obj\Debug\net7.0\Sales.Service.pdb
 C:\Proyectos\Api-Restful\Sales.Service\obj\Debug\net7.0\ref\Sales.Service.dll
+C:\Proyectos\Api-Restful\Sales.Service\bin\Debug\net7.0\Sales.Domain.dll
+C:\Proyectos\Api-Restful\Sales.Service\bin\Debug\net7.0\Sales.Domain.pdb
+C:\Proyectos\Api-Restful\Sales.Service\obj\Debug\net7.0\Sales.Service.csproj.AssemblyReference.cache
+C:\Proyectos\Api-Restful\Sales.Service\obj\Debug\net7.0\Sales.Service.csproj.CopyComplete
+C:\Proyectos\Api-Restful\Sales.Service\bin\Debug\net7.0\Sales.Repository.dll
+C:\Proyectos\Api-Restful\Sales.Service\bin\Debug\net7.0\Sales.Repository.pdb

@@ -1,0 +1,8 @@
+﻿namespace Sales.Domain.Responses.Customers
+{
+    public sealed class CustomerResponse
+    {
+        public int CustomerId { get; set; }
+        public required string Name { get; set; }
+    }
+}

@@ -1,5 +1,9 @@
 using Sales.Domain;
 using Microsoft.EntityFrameworkCore;
+using Sales.Service.Customers;
+using Sales.Repository.Commands.Customers;
+using Sales.Service.Mapper;
+using Sales.Repository.Queries.Customers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +13,12 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     ?? throw new InvalidOperationException("Connection string 'DBContext' not found.")));
 
 // Add services to the container.
+builder.Services.AddScoped<ICustomerService, CustomerService>();
+builder.Services.AddScoped<ICustomersCommandsRepository, CustomersCommandsRepository>();
+builder.Services.AddScoped<ICustomerUniqueQueriesRepository, CustomerUniqueQueriesRepository>();
+
+//Add AutoMapper
+builder.Services.AddAutoMapper(typeof(CustomerMapper));
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

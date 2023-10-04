@@ -78,3 +78,7 @@ C:\Proyectos\Api-Restful\Sales.Api\obj\Debug\net7.0\ref\Sales.Api.dll
 C:\Proyectos\Api-Restful\Sales.Api\bin\Debug\net7.0\Sales.Service.dll
 C:\Proyectos\Api-Restful\Sales.Api\bin\Debug\net7.0\Sales.Service.pdb
 C:\Proyectos\Api-Restful\Sales.Api\bin\Debug\net7.0\Microsoft.AspNetCore.OpenApi.dll
+C:\Proyectos\Api-Restful\Sales.Api\bin\Debug\net7.0\Sales.Repository.dll
+C:\Proyectos\Api-Restful\Sales.Api\bin\Debug\net7.0\Sales.Repository.pdb
+C:\Proyectos\Api-Restful\Sales.Api\bin\Debug\net7.0\AutoMapper.dll
+C:\Proyectos\Api-Restful\Sales.Api\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
