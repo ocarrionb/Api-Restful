@@ -4,6 +4,8 @@ using Sales.Service.Customers;
 using Sales.Repository.Commands.Customers;
 using Sales.Service.Mapper;
 using Sales.Repository.Queries.Customers;
+using Sales.Repository.Commands.Products;
+using Sales.Service.Products;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,13 +16,16 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 // Add services to the container.
 builder.Services.AddScoped<ICustomerService, CustomerService>();
-builder.Services.AddScoped<ICustomersCommandsRepository, CustomersCommandsRepository>();
+builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<ICustomerCommandsRepository, CustomerCommandsRepository>();
 builder.Services.AddScoped<ICustomerUniqueQueriesRepository, CustomerUniqueQueriesRepository>();
 builder.Services.AddScoped<IAllCustomersQueriesRepository, AllCustomersQueriesRepository>();
 builder.Services.AddScoped<ICustomerByIdQueriesRepository, CustomerByIdQueriesRepository>();
+builder.Services.AddScoped<IProductCommandsRepository, ProductCommandsRepository>();
 
 //Add AutoMapper
 builder.Services.AddAutoMapper(typeof(CustomerMapper));
+builder.Services.AddAutoMapper(typeof(ProductMapper));
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

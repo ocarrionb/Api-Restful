@@ -9,12 +9,12 @@ namespace Sales.Service.Customers
 {
     public sealed class CustomerService : ICustomerService
     {
-        private readonly ICustomersCommandsRepository _customerCommands;
+        private readonly ICustomerCommandsRepository _customerCommands;
         private readonly ICustomerUniqueQueriesRepository _customerUniqueQueries;
         private readonly IAllCustomersQueriesRepository _allCustomersQueriesRepository;
         private readonly ICustomerByIdQueriesRepository _customerByIdQueriesRepository;
         private readonly IMapper _mapper;
-        public CustomerService(ICustomersCommandsRepository customerCommands,
+        public CustomerService(ICustomerCommandsRepository customerCommands,
             ICustomerUniqueQueriesRepository customerUniqueQueries,
             IAllCustomersQueriesRepository allCustomersQueriesRepository,
             ICustomerByIdQueriesRepository customerByIdQueriesRepository,

@@ -2,7 +2,7 @@
 
 namespace Sales.Repository.Commands.Customers
 {
-    public interface ICustomersCommandsRepository
+    public interface ICustomerCommandsRepository
     {
         Task<Customer> CreateCustomer(Customer customer);
     }

@@ -3,10 +3,10 @@ using Sales.Domain.Entity;
 
 namespace Sales.Repository.Commands.Customers
 {
-    public class CustomersCommandsRepository : ICustomersCommandsRepository
+    public class CustomerCommandsRepository : ICustomerCommandsRepository
     {
         private readonly ApplicationDbContext _context;
-        public CustomersCommandsRepository(ApplicationDbContext context)
+        public CustomerCommandsRepository(ApplicationDbContext context)
         {
             _context = context;
         }
