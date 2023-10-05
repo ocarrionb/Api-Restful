@@ -6,6 +6,7 @@ using Sales.Service.Mapper;
 using Sales.Repository.Queries.Customers;
 using Sales.Repository.Commands.Products;
 using Sales.Service.Products;
+using Sales.Repository.Queries.Products;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +23,7 @@ builder.Services.AddScoped<ICustomerUniqueQueriesRepository, CustomerUniqueQueri
 builder.Services.AddScoped<IAllCustomersQueriesRepository, AllCustomersQueriesRepository>();
 builder.Services.AddScoped<ICustomerByIdQueriesRepository, CustomerByIdQueriesRepository>();
 builder.Services.AddScoped<IProductCommandsRepository, ProductCommandsRepository>();
+builder.Services.AddScoped<IAllProductsQueriesRepository, AllProductsQueriesRepository>();
 
 //Add AutoMapper
 builder.Services.AddAutoMapper(typeof(CustomerMapper));

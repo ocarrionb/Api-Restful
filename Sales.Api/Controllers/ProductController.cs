@@ -38,5 +38,27 @@ namespace Sales.Api.Controllers
                 return StatusCode(500, "Internal server error, please contact support");
             }
         }
+
+        [HttpGet("GetAllProducts")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public IActionResult GetAllProducts()
+        {
+            try
+            {
+                var productsListResponse = _productService.GetAllProducts();
+                if (productsListResponse == null)
+                {
+                    return NotFound();
+                }
+                return Ok(productsListResponse);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex}");
+                return StatusCode(500, "Internal server error, please contact support");
+            }
+        }
     }
 }
