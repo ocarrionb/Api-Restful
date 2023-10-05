@@ -18,6 +18,6 @@ namespace Sales.Repository.Queries.Sales
         }
 
         public IEnumerable<Sale> GetSalesByDateRange(GetSaleRequest request)
-            => _context.Sale.Where(s => s.Date >= request.StartDate &&  s.Date <= request.EndDate);
+            => _context.Sale.Where(s => s.Date >= request.StartDate && s.Date <= request.EndDate && s.Active == true);
     }
 }

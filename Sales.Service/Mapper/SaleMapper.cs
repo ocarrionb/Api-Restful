@@ -10,6 +10,7 @@ namespace Sales.Service.Mapper
         public SaleMapper()
         {
             CreateMap<CreateSaleRequest, Sale>();
+            CreateMap<UpdateSaleRequest, Sale>();
             CreateMap<Sale, SaleResponse>();
         }
     }

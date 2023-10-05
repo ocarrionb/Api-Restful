@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Sales.Domain.Requests.Customers;
 using Sales.Domain.Requests.Products;
 using Sales.Domain.Requests.Sales;
+using Sales.Domain.Responses.Sales;
 using Sales.Service.Concepts;
 using Sales.Service.Customers;
 using Sales.Service.Products;
@@ -87,6 +88,25 @@ namespace Sales.Api.Controllers
                     return NotFound();
                 }
                 return Ok(salesResponse);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex}");
+                return StatusCode(500, "Internal server error, please contact support");
+            }
+        }
+
+        [HttpPut]
+        public IActionResult UpdateSaleById([FromBody] UpdateSaleRequest request)
+        {
+            try
+            {
+                if (_saleService.UpdateSale(request))
+                    return Ok(true);
+                else
+                    return StatusCode(500, "Internal server error, please contact support");
+
+                
             }
             catch (Exception ex)
             {

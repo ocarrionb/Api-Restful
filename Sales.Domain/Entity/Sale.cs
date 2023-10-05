@@ -14,6 +14,7 @@ namespace Sales.Domain.Entity
         
         [Column(TypeName = "decimal(18,0)")]
         public decimal Total { get; set; }
+        public bool Active { get; set; }
         public Customer Customer { get; set; }
     }
 }

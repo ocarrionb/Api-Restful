@@ -37,6 +37,7 @@ builder.Services.AddScoped<IProductCommandsRepository, ProductCommandsRepository
 builder.Services.AddScoped<ISaleCommandsRepository, SaleCommandsRepository>();
 builder.Services.AddScoped<IConceptCommandsRepository, ConceptCommandsRepository>();
 builder.Services.AddScoped<ISaleByDateRangeQueriesRepository, SaleByDateRangeQueriesRepository>();
+builder.Services.AddScoped<IUpdateSaleCommandsRepository, UpdateSaleCommandsRepository>();
 
 //Add AutoMapper
 builder.Services.AddAutoMapper(typeof(CustomerMapper));

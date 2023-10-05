@@ -12,13 +12,16 @@ namespace Sales.Service.Sales
     {
         private readonly ISaleCommandsRepository _commandsRepository;
         private readonly ISaleByDateRangeQueriesRepository _queriesRepository;
+        private readonly IUpdateSaleCommandsRepository _updateSaleCommandsRepository;
         private readonly IMapper _mapper;
         public SaleService(ISaleCommandsRepository commandsRepository,
             ISaleByDateRangeQueriesRepository queriesRepository,
+            IUpdateSaleCommandsRepository updateSaleCommandsRepository,
             IMapper mapper)
         {
             _commandsRepository = commandsRepository;
             _queriesRepository = queriesRepository;
+            _updateSaleCommandsRepository = updateSaleCommandsRepository;
             _mapper = mapper;
         }
         public async Task<SaleResponse> CreateSale(CreateSaleRequest request)
@@ -31,5 +34,8 @@ namespace Sales.Service.Sales
                 .ForEach(sale => listSalesResponse.Add(_mapper.Map<SaleResponse>(sale)));
             return listSalesResponse;
         }
+
+        public bool UpdateSale(UpdateSaleRequest request)
+            => _updateSaleCommandsRepository.UpdateSale(_mapper.Map<Sale>(request));
     }
 }

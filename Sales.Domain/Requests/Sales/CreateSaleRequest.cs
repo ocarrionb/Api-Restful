@@ -6,7 +6,7 @@ namespace Sales.Domain.Requests.Sales
     {
         public DateTime? Date { get; set; }
         public required int CustomerId { get; set; }
-        public decimal Total { get; set; }        
+        public decimal Total { get; set; }
         public required CreateConceptRequest ConceptRequest { get; set; }
     }
 }

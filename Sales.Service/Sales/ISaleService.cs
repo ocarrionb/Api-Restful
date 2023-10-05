@@ -1,4 +1,5 @@
-﻿using Sales.Domain.Requests.Sales;
+﻿using Microsoft.EntityFrameworkCore.Update.Internal;
+using Sales.Domain.Requests.Sales;
 using Sales.Domain.Responses.Sales;
 
 namespace Sales.Service.Sales
@@ -7,5 +8,6 @@ namespace Sales.Service.Sales
     {
         Task<SaleResponse> CreateSale(CreateSaleRequest request);
         IEnumerable<SaleResponse> GetSalesByDateRange(GetSaleRequest request);
+        bool UpdateSale(UpdateSaleRequest request);
     }
 }
