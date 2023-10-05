@@ -49,7 +49,7 @@ namespace Sales.Api.Controllers
 
         [HttpGet("GetAllCustomers")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult GetAllCustomers()
         {
@@ -71,7 +71,7 @@ namespace Sales.Api.Controllers
 
         [HttpGet("GetCustomerById")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult GetCustomerById(int CustomerId)
         {

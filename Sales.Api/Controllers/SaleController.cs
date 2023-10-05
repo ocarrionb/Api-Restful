@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿
+using Microsoft.AspNetCore.Mvc;
 using Sales.Domain.Requests.Customers;
 using Sales.Domain.Requests.Products;
 using Sales.Domain.Requests.Sales;
@@ -64,6 +65,28 @@ namespace Sales.Api.Controllers
                 saleResponse.Concept = conceptResponse;
                 
                 return StatusCode(StatusCodes.Status201Created, saleResponse);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex}");
+                return StatusCode(500, "Internal server error, please contact support");
+            }
+        }
+
+        [HttpGet("GetSalesByDateRange")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public IActionResult GetSalesByDateRange([FromQuery] GetSaleRequest request)
+        {
+            try
+            {
+                var salesResponse = _saleService.GetSalesByDateRange(request);
+                if (salesResponse == null)
+                {
+                    return NotFound();
+                }
+                return Ok(salesResponse);
             }
             catch (Exception ex)
             {

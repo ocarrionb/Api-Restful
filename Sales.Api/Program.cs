@@ -11,6 +11,7 @@ using Sales.Repository.Commands.Sales;
 using Sales.Service.Sales;
 using Sales.Service.Concepts;
 using Sales.Repository.Commands.Concepts;
+using Sales.Repository.Queries.Sales;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -35,6 +36,7 @@ builder.Services.AddScoped<ICustomerCommandsRepository, CustomerCommandsReposito
 builder.Services.AddScoped<IProductCommandsRepository, ProductCommandsRepository>();
 builder.Services.AddScoped<ISaleCommandsRepository, SaleCommandsRepository>();
 builder.Services.AddScoped<IConceptCommandsRepository, ConceptCommandsRepository>();
+builder.Services.AddScoped<ISaleByDateRangeQueriesRepository, SaleByDateRangeQueriesRepository>();
 
 //Add AutoMapper
 builder.Services.AddAutoMapper(typeof(CustomerMapper));
