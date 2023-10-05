@@ -1,10 +1,4 @@
-﻿using Sales.Domain.Entity;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Sales.Domain.Responses.Concepts;
 
 namespace Sales.Domain.Responses.Sales
 {
@@ -14,6 +8,6 @@ namespace Sales.Domain.Responses.Sales
         public required DateTime Date { get; set; }
         public required int CustomerId { get; set; }
         public decimal Total { get; set; }
-        public Concept Concept { get; set; }
+        public ConceptResponse Concept { get; set; }
     }
 }

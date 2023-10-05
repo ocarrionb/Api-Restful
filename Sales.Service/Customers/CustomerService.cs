@@ -27,29 +27,16 @@ namespace Sales.Service.Customers
             _mapper = mapper;
         }
         public async Task<CustomerResponse> CreateCustomer(CreateCustomerRequest request)
-        {
-            var createCustomer = _mapper.Map<Customer>(request);
-            var response = await _customerCommands.CreateCustomer(createCustomer);
-            var customerResponse = _mapper.Map<CustomerResponse>(response);
-            return customerResponse;
-        }
+            => _mapper.Map<CustomerResponse>(await _customerCommands.CreateCustomer(_mapper.Map<Customer>(request)));
         public ICollection<CustomerResponse> GetAllCustomers()
-        { 
-            var listCustomers = _allCustomersQueriesRepository.GetAllCustomers();
-            var listCustomersResponse = new List<CustomerResponse>();
-
-            foreach (var item in listCustomers)
-            {
-                listCustomersResponse.Add(_mapper.Map<CustomerResponse>(item));
-            }
+        {
+            var listCustomersResponse = new List<CustomerResponse>();            
+            _allCustomersQueriesRepository.GetAllCustomers().ToList()
+                .ForEach(customer => listCustomersResponse.Add(_mapper.Map<CustomerResponse>(customer)));
             return listCustomersResponse;
         }
         public CustomerResponse GetCustomerById(int CustomerId)
-        {
-            var response = _customerByIdQueriesRepository.GetCustomerById(CustomerId);
-            var customerResponse = _mapper.Map<CustomerResponse>(response);
-            return customerResponse;
-        }
+            => _mapper.Map<CustomerResponse>(_customerByIdQueriesRepository.GetCustomerById(CustomerId));
         public bool IsUnique(string Name)
             => _customerUniqueQueries.IsUniqueCustomer(Name);
     }

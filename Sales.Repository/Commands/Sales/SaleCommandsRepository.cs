@@ -10,7 +10,7 @@ namespace Sales.Repository.Commands.Sales
         {
             _context = context;
         }
-        public async Task<Sale> CreateProduct(Sale sale)
+        public async Task<Sale> CreateSale(Sale sale)
         {
             _context.Sale.Add(sale);
             await _context.SaveChangesAsync();

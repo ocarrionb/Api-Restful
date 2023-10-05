@@ -7,7 +7,7 @@ namespace Sales.Domain.Requests.Concepts
     {
         public decimal Quantity { get; set; }
         public int ProductId { get; set; }
-        public int SaleId { get; set; }
+        public int? SaleId { get; set; }
         public decimal UnitPrice { get; set; }
         public decimal Amount { get; set; }
     }

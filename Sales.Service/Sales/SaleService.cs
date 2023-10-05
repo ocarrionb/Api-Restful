@@ -1,17 +1,22 @@
-﻿using Sales.Domain.Requests.Sales;
+﻿using AutoMapper;
+using Sales.Domain.Entity;
+using Sales.Domain.Requests.Sales;
 using Sales.Domain.Responses.Sales;
+using Sales.Repository.Commands.Sales;
 
 namespace Sales.Service.Sales
 {
     public sealed class SaleService : ISaleService
     {
-        public SaleService()
+        private readonly ISaleCommandsRepository _commandsRepository;
+        private readonly IMapper _mapper;
+        public SaleService(ISaleCommandsRepository commandsRepository,
+            IMapper mapper)
         {
-            
+            _commandsRepository = commandsRepository;
+            _mapper = mapper;
         }
-        public Task<SaleResponse> CreateSale(CreateSaleRequest request)
-        {
-            throw new NotImplementedException();
-        }
+        public async Task<SaleResponse> CreateSale(CreateSaleRequest request)
+            => _mapper.Map<SaleResponse>(await _commandsRepository.CreateSale(_mapper.Map<Sale>(request)));
     }
 }

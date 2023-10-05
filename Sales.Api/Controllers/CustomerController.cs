@@ -25,7 +25,7 @@ namespace Sales.Api.Controllers
             bool validate = _customerService.IsUnique(createCustomerRequest.Name);
             if (!validate)
             {
-                return StatusCode(400, "Username is already used.");
+                return StatusCode(400, "Customer is already used.");
             }
 
             if (!ModelState.IsValid || createCustomerRequest == null)

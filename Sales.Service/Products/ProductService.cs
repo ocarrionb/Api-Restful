@@ -24,30 +24,17 @@ namespace Sales.Service.Products
             _mapper = mapper;
         }
         public async Task<ProductResponse> CreateProduct(CreateProductRequest request)
-        {
-            var createProduct = _mapper.Map<Product>(request);
-            var response = await _commandsRepository.CreateProduct(createProduct);
-            var productResponse = _mapper.Map<ProductResponse>(response);
-            return productResponse;
-        }
+            => _mapper.Map<ProductResponse>(await _commandsRepository.CreateProduct(_mapper.Map<Product>(request)));
 
         public ICollection<ProductResponse> GetAllProducts()
         {
-            var listProducts = _allProductsQueriesRepository.GetAllProducts();
             var listProductsResponse = new List<ProductResponse>();
-
-            foreach (var item in listProducts)
-            {
-                listProductsResponse.Add(_mapper.Map<ProductResponse>(item));
-            }
+            _allProductsQueriesRepository.GetAllProducts().ToList()
+                .ForEach(product => listProductsResponse.Add(_mapper.Map<ProductResponse>(product)));
             return listProductsResponse;
         }
 
         public ProductResponse GetProductById(int productId)
-        {
-            var response = _productByIdQueriesRepository.GetProductById(productId);
-            var productResponse = _mapper.Map<ProductResponse>(response);
-            return productResponse;
-        }
+            => _mapper.Map<ProductResponse>(_productByIdQueriesRepository.GetProductById(productId));
     }
 }
