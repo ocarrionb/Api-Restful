@@ -7,7 +7,7 @@ namespace Sales.Service.Customers
     {
         Task<CustomerResponse> CreateCustomer(CreateCustomerRequest request);
         ICollection<CustomerResponse> GetAllCustomers();
-        Task<CustomerResponse> GetCustomerById(int CustomerId);
+        CustomerResponse GetCustomerById(int CustomerId);
         bool IsUnique(string Name);
     }
 }

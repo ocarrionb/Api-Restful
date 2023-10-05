@@ -10,9 +10,6 @@ namespace Sales.Repository.Queries.Customers
             _context = context;
         }
         public bool IsUniqueCustomer(string name)
-        {
-            var usuarioBd = _context.Customer.FirstOrDefault(u => u.Name == name);
-            return usuarioBd == null ? true : false;
-        }
+            => _ = _context.Customer.FirstOrDefault(u => u.Name == name) == null;
     }
 }

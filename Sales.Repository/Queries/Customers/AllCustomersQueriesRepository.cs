@@ -12,8 +12,6 @@ namespace Sales.Repository.Queries.Customers
             _context = context;
         }
         public ICollection<Customer> GetAllCustomers()
-        {
-            return _context.Customer.OrderBy(u => u.Name).ToList();
-        }
+            =>_context.Customer.OrderBy(u => u.Name).ToList();
     }
 }

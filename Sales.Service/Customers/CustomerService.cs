@@ -12,15 +12,18 @@ namespace Sales.Service.Customers
         private readonly ICustomersCommandsRepository _customerCommands;
         private readonly ICustomerUniqueQueriesRepository _customerUniqueQueries;
         private readonly IAllCustomersQueriesRepository _allCustomersQueriesRepository;
+        private readonly ICustomerByIdQueriesRepository _customerByIdQueriesRepository;
         private readonly IMapper _mapper;
         public CustomerService(ICustomersCommandsRepository customerCommands,
             ICustomerUniqueQueriesRepository customerUniqueQueries,
             IAllCustomersQueriesRepository allCustomersQueriesRepository,
+            ICustomerByIdQueriesRepository customerByIdQueriesRepository,
             IMapper mapper) 
         {
             _customerCommands = customerCommands;
             _customerUniqueQueries = customerUniqueQueries;
             _allCustomersQueriesRepository = allCustomersQueriesRepository;
+            _customerByIdQueriesRepository = customerByIdQueriesRepository;
             _mapper = mapper;
         }
         public async Task<CustomerResponse> CreateCustomer(CreateCustomerRequest request)
@@ -29,7 +32,6 @@ namespace Sales.Service.Customers
             var response = await _customerCommands.CreateCustomer(createCustomer);
             var customerResponse = _mapper.Map<CustomerResponse>(response);
             return customerResponse;
-
         }
         public ICollection<CustomerResponse> GetAllCustomers()
         { 
@@ -42,9 +44,11 @@ namespace Sales.Service.Customers
             }
             return listCustomersResponse;
         }
-        public Task<CustomerResponse> GetCustomerById(int CustomerId)
+        public CustomerResponse GetCustomerById(int CustomerId)
         {
-            throw new NotImplementedException();
+            var response = _customerByIdQueriesRepository.GetCustomerById(CustomerId);
+            var customerResponse = _mapper.Map<CustomerResponse>(response);
+            return customerResponse;
         }
         public bool IsUnique(string Name)
             => _customerUniqueQueries.IsUniqueCustomer(Name);

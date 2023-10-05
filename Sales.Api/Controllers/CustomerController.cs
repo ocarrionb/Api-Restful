@@ -19,6 +19,7 @@ namespace Sales.Api.Controllers
         [HttpPost("CreateCustomer")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> Post([FromBody] CreateCustomerRequest createCustomerRequest)
         {
             bool validate = _customerService.IsUnique(createCustomerRequest.Name);
@@ -33,11 +34,11 @@ namespace Sales.Api.Controllers
             }
             try
             {
-                var res = await _customerService.CreateCustomer(createCustomerRequest);
-                if (res == null)
+                var customerResponse = await _customerService.CreateCustomer(createCustomerRequest);
+                if (customerResponse == null)
                     return StatusCode(500, "Internal server error, please contact support");
 
-                return StatusCode(StatusCodes.Status201Created, res);
+                return StatusCode(StatusCodes.Status201Created, customerResponse);
             }
             catch (Exception ex)
             {
@@ -46,19 +47,20 @@ namespace Sales.Api.Controllers
             }
         }
 
-        [HttpGet]
+        [HttpGet("GetAllCustomers")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult GetAllCustomers()
         {
             try
             {
-                var customerList = _customerService.GetAllCustomers();
-                if (customerList == null)
+                var customerListResponse = _customerService.GetAllCustomers();
+                if (customerListResponse == null)
                 {
                     return NotFound();
                 }
-                return Ok(customerList);
+                return Ok(customerListResponse);
             }
             catch (Exception ex)
             {
@@ -67,5 +69,26 @@ namespace Sales.Api.Controllers
             }
         }
 
+        [HttpGet("GetCustomerById")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public IActionResult GetCustomerById(int CustomerId)
+        {
+            try
+            {
+                var customerResponse = _customerService.GetCustomerById(CustomerId);
+                if (customerResponse == null)
+                {
+                    return NotFound();
+                }
+                return Ok(customerResponse);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex}");
+                return StatusCode(500, "Internal server error, please contact support");
+            }
+        }
     }
 }
