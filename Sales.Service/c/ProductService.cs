@@ -11,13 +11,16 @@ namespace Sales.Service.Products
     {
         private readonly IProductCommandsRepository _commandsRepository;
         private readonly IAllProductsQueriesRepository _allProductsQueriesRepository;
+        private readonly IProductByIdQueriesRepository _productByIdQueriesRepository;
         private readonly IMapper _mapper;
         public ProductService(IProductCommandsRepository commandsRepository,
             IAllProductsQueriesRepository allProductsQueriesRepository,
+            IProductByIdQueriesRepository productByIdQueriesRepository,
             IMapper mapper)
         {
             _commandsRepository = commandsRepository;
             _allProductsQueriesRepository = allProductsQueriesRepository;
+            _productByIdQueriesRepository = productByIdQueriesRepository;
             _mapper = mapper;
         }
         public async Task<ProductResponse> CreateProduct(CreateProductRequest request)
@@ -38,6 +41,13 @@ namespace Sales.Service.Products
                 listProductsResponse.Add(_mapper.Map<ProductResponse>(item));
             }
             return listProductsResponse;
+        }
+
+        public ProductResponse GetProductById(int productId)
+        {
+            var response = _productByIdQueriesRepository.GetProductById(productId);
+            var productResponse = _mapper.Map<ProductResponse>(response);
+            return productResponse;
         }
     }
 }

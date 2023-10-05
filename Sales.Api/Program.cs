@@ -24,6 +24,7 @@ builder.Services.AddScoped<IAllCustomersQueriesRepository, AllCustomersQueriesRe
 builder.Services.AddScoped<ICustomerByIdQueriesRepository, CustomerByIdQueriesRepository>();
 builder.Services.AddScoped<IProductCommandsRepository, ProductCommandsRepository>();
 builder.Services.AddScoped<IAllProductsQueriesRepository, AllProductsQueriesRepository>();
+builder.Services.AddScoped<IProductByIdQueriesRepository, ProductByIdQueriesRepository>();
 
 //Add AutoMapper
 builder.Services.AddAutoMapper(typeof(CustomerMapper));
