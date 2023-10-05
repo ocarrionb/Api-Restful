@@ -11,13 +11,16 @@ namespace Sales.Service.Customers
     {
         private readonly ICustomersCommandsRepository _customerCommands;
         private readonly ICustomerUniqueQueriesRepository _customerUniqueQueries;
+        private readonly IAllCustomersQueriesRepository _allCustomersQueriesRepository;
         private readonly IMapper _mapper;
         public CustomerService(ICustomersCommandsRepository customerCommands,
             ICustomerUniqueQueriesRepository customerUniqueQueries,
+            IAllCustomersQueriesRepository allCustomersQueriesRepository,
             IMapper mapper) 
         {
             _customerCommands = customerCommands;
             _customerUniqueQueries = customerUniqueQueries;
+            _allCustomersQueriesRepository = allCustomersQueriesRepository;
             _mapper = mapper;
         }
         public async Task<CustomerResponse> CreateCustomer(CreateCustomerRequest request)
@@ -29,8 +32,15 @@ namespace Sales.Service.Customers
 
         }
         public ICollection<CustomerResponse> GetAllCustomers()
-        {
-            throw new NotImplementedException();
+        { 
+            var listCustomers = _allCustomersQueriesRepository.GetAllCustomers();
+            var listCustomersResponse = new List<CustomerResponse>();
+
+            foreach (var item in listCustomers)
+            {
+                listCustomersResponse.Add(_mapper.Map<CustomerResponse>(item));
+            }
+            return listCustomersResponse;
         }
         public Task<CustomerResponse> GetCustomerById(int CustomerId)
         {

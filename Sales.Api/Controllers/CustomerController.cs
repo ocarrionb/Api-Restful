@@ -46,5 +46,26 @@ namespace Sales.Api.Controllers
             }
         }
 
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        public IActionResult GetAllCustomers()
+        {
+            try
+            {
+                var customerList = _customerService.GetAllCustomers();
+                if (customerList == null)
+                {
+                    return NotFound();
+                }
+                return Ok(customerList);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex}");
+                return StatusCode(500, "Internal server error, please contact support");
+            }
+        }
+
     }
 }

@@ -14,8 +14,10 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 // Add services to the container.
 builder.Services.AddScoped<ICustomerService, CustomerService>();
+builder.Services.AddScoped<ICustomerService, CustomerService>();
 builder.Services.AddScoped<ICustomersCommandsRepository, CustomersCommandsRepository>();
 builder.Services.AddScoped<ICustomerUniqueQueriesRepository, CustomerUniqueQueriesRepository>();
+builder.Services.AddScoped<IAllCustomersQueriesRepository, AllCustomersQueriesRepository>();
 
 //Add AutoMapper
 builder.Services.AddAutoMapper(typeof(CustomerMapper));
