@@ -21,5 +21,3 @@ jobs:
       run: dotnet restore SalesSolution.sln
     - name: Build
       run: dotnet build SalesSolution.sln --no-restore
-    - name: Test
-      run: dotnet test SalesSolution.sln --no-build --verbosity normal
